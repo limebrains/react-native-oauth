@@ -483,7 +483,8 @@ class OAuthManagerModule extends ReactContextBaseJavaModule {
     }
 
     String clientID = (String) cfg.get("client_id");
-    String idToken = accessToken.getParameter("id_token");
+    Map accessTokenMap = new Gson().fromJson(accessToken.getRawResponse(), Map.class);
+    String idToken = (String) accessTokenMap.get("id_token");
 
     authHeader = tokenType + " " + accessToken.getAccessToken();
     credentials.putString("authorizationHeader", authHeader);

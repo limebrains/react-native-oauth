@@ -28,6 +28,10 @@ android {
             minifyEnabled false
         }
     }
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'ValidFragment'
+    }
 
     android.packagingOptions {
         exclude 'META-INF/LICENSE'
